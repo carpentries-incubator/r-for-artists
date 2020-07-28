@@ -1,0 +1,86 @@
+---
+title: "Draw a Rectangle"
+teaching: 0
+exercises: 0
+questions:
+- "How do I draw a rectangle?"
+objectives:
+- "Create rectangles using ggplot2."
+- "Set aesthetics (e.g. color, opacity) of drawn object."
+keypoints:
+- "First key point. Brief Answer to questions. (FIXME)"
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("01-introduction-")
+```
+
+```{r load-libraries, echo = FALSE, results='hide', message = FALSE, warning = FALSE}
+library(ggplot2)
+```
+
+```{r, load-ggplot2, eval = FALSE}
+library(ggplot2)
+```
+
+```{r, first-rect}
+ggplot() + 
+  geom_rect(aes(xmin = 1, xmax = 3, ymin = 10, ymax = 15))
+```
+```{r, add-fill}
+ggplot() + 
+  geom_rect(aes(xmin = 1, xmax = 3, ymin = 10, ymax = 15), 
+            fill = "blue")
+```
+## Warning
+```{r, fill-in-aes}
+ggplot() + 
+  geom_rect(aes(xmin = 1, xmax = 3, ymin = 10, ymax = 15, fill = "blue"))
+```
+> ## Your Favorite Color
+> 
+> ```{r, fav-color}
+> ggplot() + 
+> geom_rect(aes(xmin = 1, xmax = 3, ymin = 10, ymax = 15), fill = "purple")
+> ```
+>
+{: .challenge}
+
+```{r, add-transparency}
+ggplot() + 
+  geom_rect(aes(xmin = 1, xmax = 3, ymin = 10, ymax = 15), 
+            fill = "blue", alpha = 0.4)
+```
+Higher alpha is more opaque (less transparent). 
+
+```{r, add-outline}
+ggplot() + 
+  geom_rect(aes(xmin = 1, xmax = 3, ymin = 10, ymax = 15), 
+            fill = "blue", alpha = 0.4, color = "black")
+```
+```{r, blank-canvas}
+ggplot() + 
+  geom_rect(aes(xmin = 1, xmax = 3, ymin = 10, ymax = 15), 
+            fill = "blue", alpha = 0.4, color = "black") + 
+  theme_void()
+```
+
+```{r, two-rectangles}
+ggplot() + 
+  geom_rect(aes(xmin = 1, xmax = 3, ymin = 10, ymax = 15), 
+            fill = "blue", alpha = 0.4, color = "black") + 
+  geom_rect(aes(xmin = 2, xmax = 5, ymin = 3, ymax = 10), 
+            fill = "orange", alpha = 1, color = "black") +
+  theme_void()
+```
+Possible to add each rectangle with a separate line of code (i.e. a separate
+call to the `geom_rect()` function), but labor intensive and repetitive.
+Instead, we can create a table-like data structure to hold the values we want
+to use for each rectangle and iterate through each row of that table with
+a single line of code. 
+
+{% include links.md %}
+
+
+
