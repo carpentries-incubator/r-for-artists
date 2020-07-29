@@ -1,0 +1,26 @@
+---
+title: "Draw a Rectangle"
+teaching: 0
+exercises: 0
+questions:
+- "How do I draw a rectangle?"
+objectives:
+- "Create rectangles using ggplot2."
+- "Set aesthetics (e.g. color, opacity) of drawn object."
+keypoints:
+- "First key point. Brief Answer to questions. (FIXME)"
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("01-introduction-")
+```
+
+```{r load-libraries, echo = FALSE, results='hide', message = FALSE, warning = FALSE}
+library(ggplot2)
+```
+
+
+
+
+{% include links.md %}

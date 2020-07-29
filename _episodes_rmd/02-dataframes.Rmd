@@ -1,0 +1,74 @@
+---
+title: "Draw Many Rectangles"
+teaching: 0
+exercises: 0
+questions:
+- "How can I draw many rectangles without a lot of code?"
+objectives:
+- "Create a dataframe to store values (e.g. color) for each rectangle."
+keypoints:
+- "First key point. Brief Answer to questions. (FIXME)"
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("02-dataframes-")
+```
+
+```{r load-libraries, echo = FALSE, results='hide', message = FALSE, warning = FALSE}
+library(ggplot2)
+```
+
+Figure of dataframe structure from another lesson.
+
+You can make a dataframe by manually entering the values you want to use
+for each variable for each rectangle and then bind them together.
+
+```{r dataframe-hard-way}
+rect1 <- c(xmin = 1, xmax = 3, ymin = 10, ymax = 15, fill = "blue", alpha = 0.4, color = "black")
+rect2 <- c(xmin = 2, xmax = 5, ymin = 3, ymax = 10, fill = "orange", alpha = 1, color = "black")
+
+my_rectangles <- rbind(rect1, rect2)
+```
+
+This is also really repetitive and annoying if you have many rectangles. 
+Instead of specifying all of the variable names, you can do this: 
+
+```{r data-frame-easier}
+rect1 <- c(1, 3, 10, 15, "blue", 0.4, "black")
+rect2 <- c(2, 5, 3, 10, "orange", 1, "black")
+
+my_rectangles <- rbind(rect1, rect2)
+colnames(my_rectangles) <- c("xmin", "xmax", "ymin", "ymax", "fill", "alpha", "color")
+```
+
+Note to self: Neither of the above actually creates dataframes, so move intro of dataframe terminology to later. 
+
+> ## Exercise
+> Add two more rectangles to your data table.
+> 
+> ```{r exercise-add-rects}
+> rect3 <- c(8, 15, 3, 10, "darkblue", 0.3, "black")
+> rect4 <- c(1, 4, 6, 12, "purple", 0.5, "black")
+> 
+> my_rectangles <- rbind(my_rectangles, rect3, rect4)
+> ```
+> {: .solution}
+{: .challenge}
+
+```{r make-df}
+my_rectangles <- as.data.frame(my_rectangles)
+```
+
+```{r rects-from-dataframe}
+ggplot() + 
+    geom_rect(my_rectangles, mapping = 
+                aes(xmin = xmin, xmax = xmax, 
+                    ymin = ymin, ymax = ymax),
+              fill = my_rectangles$fill,
+              alpha = my_rectangles$alpha) + 
+    theme_void()
+```
+
+
+{% include links.md %}
