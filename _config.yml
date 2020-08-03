@@ -99,4 +99,4 @@ exclude:
 highlighter: rouge
 
 # Add remote theme
-remote_theme carpentries/carpentries-theme
+remote_theme: carpentries/carpentries-theme
