@@ -16,7 +16,7 @@ knitr_fig_path("02-dataframes-")
 ```
 
 ```{r load-libraries, echo = FALSE, results='hide', message = FALSE, warning = FALSE}
-library(ggplot2)
+library(tidyverse)
 ```
 
 Figure of dataframe structure from another lesson.
@@ -29,6 +29,20 @@ rect1 <- c(xmin = 1, xmax = 3, ymin = 10, ymax = 15, fill = "blue", alpha = 0.4,
 rect2 <- c(xmin = 2, xmax = 5, ymin = 3, ymax = 10, fill = "orange", alpha = 1, color = "black")
 
 my_rectangles <- rbind(rect1, rect2)
+```
+
+```{r make-df}
+my_rectangles <- as.data.frame(my_rectangles)
+```
+
+```{r multiple-rectangles-hard-way}
+ggplot() + 
+  geom_rect(my_rectangles, mapping =  
+              aes(xmin = xmin, xmax = xmax, ymin = ymin, 
+                  ymax = ymax), 
+            fill = my_rectangles$fill, alpha = my_rectangles$alpha, 
+            color = my_rectangles$color) + 
+  theme_void()
 ```
 
 This is also really repetitive and annoying if you have many rectangles. 
@@ -55,10 +69,6 @@ Note to self: Neither of the above actually creates dataframes, so move intro of
 > ```
 > {: .solution}
 {: .challenge}
-
-```{r make-df}
-my_rectangles <- as.data.frame(my_rectangles)
-```
 
 ```{r rects-from-dataframe}
 ggplot() + 
