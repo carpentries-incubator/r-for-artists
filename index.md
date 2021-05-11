@@ -15,3 +15,20 @@ Lesson in initial assembly phase. This is meant to eventually be a fun introduct
 {: .prereq}
 
 {% include links.md %}
+
+By the end of this lesson, you will be able to create cool semi-random Mondrian-inspired digital paintings like this:
+
+![png](../fig/mondrian-11.png)
+
+You will understand how to customize individual features of your plots, and change things like color scheme:
+
+
+transparency:
+![png](mondrian-12.png)
+
+
+and density of borders:
+
+![png](../fig/mondrian-13.png)
+
+You will also be able to . . . 
